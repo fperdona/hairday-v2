@@ -13,8 +13,11 @@ import Button from "./core-components/button";
 import ButtonIcon from "./core-components/button-icon";
 import TimeSelection from "./core-components/time-select";
 import InputText from "./core-components/input-text";
+import DateSelect from "./core-components/date-select";
+import { useState } from "react";
 
 export default function App() {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   return (
     <div className="min-h-screen bg-gray-900 p-4 flex flex-col gap-4">
       <div className="flex flex-col gap-2">
@@ -56,6 +59,18 @@ export default function App() {
 
       <div className="w-80 flex flex-col gap-2">
         <InputText icon={UserSquare} placeholder="Helena Souza" />
+      </div>
+
+      <div className="w-80">
+        <DateSelect
+          selected={selectedDate || undefined}
+          calendarBlank={CalendarBlank}
+          caretDown={CaretDown}
+          onChange={(date) => {
+            setSelectedDate(date);
+            console.log("Data selecionada:", date);
+          }}
+        />
       </div>
     </div>
   );
