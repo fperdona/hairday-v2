@@ -37,7 +37,7 @@ export default function LayoutMain() {
         </aside>
 
         <div className="w-full px-28 py-20">
-          <Outlet />
+          <Outlet context={{ appointments, removeAppointment }} />
         </div>
       </main>
     </>
