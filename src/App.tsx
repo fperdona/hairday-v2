@@ -10,6 +10,7 @@ import CaretRight from "./assets/icons/caret-right.svg?react";
 import CaretLeft from "./assets/icons/caret-left.svg?react";
 import Trash from "./assets/icons/trash.svg?react";
 import Button from "./core-components/button";
+import ButtonIcon from "./core-components/button-icon";
 
 export default function App() {
   return (
@@ -37,6 +38,12 @@ export default function App() {
       <div className="w-80 flex flex-col gap-2">
         <Button>Agendar</Button>
         <Button disabled>Agendar</Button>
+      </div>
+
+      <div className="flex gap-2">
+        <ButtonIcon icon={Trash} />
+        <ButtonIcon icon={Trash} />
+        <ButtonIcon icon={Trash} />
       </div>
     </div>
   );
