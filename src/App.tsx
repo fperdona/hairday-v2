@@ -11,6 +11,7 @@ import CaretLeft from "./assets/icons/caret-left.svg?react";
 import Trash from "./assets/icons/trash.svg?react";
 import Button from "./core-components/button";
 import ButtonIcon from "./core-components/button-icon";
+import TimeSelection from "./core-components/time-select";
 
 export default function App() {
   return (
@@ -44,6 +45,12 @@ export default function App() {
         <ButtonIcon icon={Trash} />
         <ButtonIcon icon={Trash} />
         <ButtonIcon icon={Trash} />
+      </div>
+
+      <div className="flex gap-1">
+        <TimeSelection time="09:00" />
+        <TimeSelection time="09:00" selected />
+        <TimeSelection time="09:00" disabled />
       </div>
     </div>
   );
