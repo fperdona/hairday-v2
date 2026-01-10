@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+
+  /* Cores do Produto (Amarelos) */
+  --color-yellow-light: #dbc170;
+  --color-yellow: #bb952e;
+  --color-yellow-dark: #846f2e;
+
+  /* Cores Base (Cinzas) */
+  --color-gray-100: #f5f4f5;
+  --color-gray-200: #b2afb6;
+  --color-gray-300: #98959d;
+  --color-gray-400: #7a767f;
+  --color-gray-500: #3e3c41;
+  --color-gray-600: #2e2c30;
+  --color-gray-700: #232225;
+  --color-gray-800: #19181b;
+  --color-gray-900: #050505;
+
+  --color-red-500: #ef4444;
+  /* Fonte */
+  --font-sans: "Catamaran", sans-serif;
+
+  /* Tipografia (opcional - pode usar direto no Tailwind) */
+  --font-size-title-lg: 24px;
+  --font-size-title-md: 16px;
+  --font-size-title-sm: 14px;
+  --font-size-text-md: 16px;
+  --font-size-text-sm: 14px;
+
+  --line-height-title: 32px;
+  --line-height-text: 20px;
+}
