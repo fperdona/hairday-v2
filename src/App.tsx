@@ -9,6 +9,7 @@ import CalendarBlank from "./assets/icons/calendar-blank.svg?react";
 import CaretRight from "./assets/icons/caret-right.svg?react";
 import CaretLeft from "./assets/icons/caret-left.svg?react";
 import Trash from "./assets/icons/trash.svg?react";
+import Button from "./core-components/button";
 
 export default function App() {
   return (
@@ -31,6 +32,11 @@ export default function App() {
         <Icon svg={CaretRight} className="fill-yellow" />
         <Icon svg={CaretLeft} className="fill-yellow" />
         <Icon svg={Trash} className="fill-yellow" />
+      </div>
+
+      <div className="w-80 flex flex-col gap-2">
+        <Button>Agendar</Button>
+        <Button disabled>Agendar</Button>
       </div>
     </div>
   );
