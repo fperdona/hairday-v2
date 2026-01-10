@@ -12,6 +12,7 @@ import Trash from "./assets/icons/trash.svg?react";
 import Button from "./core-components/button";
 import ButtonIcon from "./core-components/button-icon";
 import TimeSelection from "./core-components/time-select";
+import InputText from "./core-components/input-text";
 
 export default function App() {
   return (
@@ -51,6 +52,10 @@ export default function App() {
         <TimeSelection time="09:00" />
         <TimeSelection time="09:00" selected />
         <TimeSelection time="09:00" disabled />
+      </div>
+
+      <div className="w-80 flex flex-col gap-2">
+        <InputText icon={UserSquare} placeholder="Helena Souza" />
       </div>
     </div>
   );
