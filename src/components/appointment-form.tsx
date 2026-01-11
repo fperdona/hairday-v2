@@ -13,6 +13,7 @@ import MoonStars from "../assets/icons/moon-stars.svg?react";
 import type { Appointment } from "../models/appointment";
 import { isTimeSlotBooked, formatDateToBR } from "../helpers/appointment-utils";
 import { SCHEDULE_PERIODS } from "../constants/schedule";
+import { validateAppointment } from "../helpers/validation";
 
 interface AppointmentFormProps {
   onSchedule: (date: string, time: string, clientName: string) => void;
@@ -26,14 +27,27 @@ export default function AppointmentForm({
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [clientName, setClientName] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   function handleSchedule() {
+    const validation = validateAppointment(
+      selectedDate,
+      selectedTime,
+      clientName
+    );
+
+    if (!validation.valid) {
+      setError(validation.error || "");
+      return;
+    }
+
     const formattedDate = formatDateToBR(selectedDate);
     onSchedule(formattedDate, selectedTime, clientName.trim());
 
     // Limpa o formulário
     setSelectedTime("");
     setClientName("");
+    setError("");
   }
 
   return (
@@ -57,6 +71,7 @@ export default function AppointmentForm({
           calendarBlank={CalendarBlank}
           caretDown={CaretDown}
           className="w-full"
+          minDate={new Date()} // Adiciona esta linha
         />
       </div>
 
@@ -136,8 +151,15 @@ export default function AppointmentForm({
           className="w-full"
           onChange={(e) => {
             setClientName(e.target.value);
+            setError(""); // Limpa erro quando usuário digita
           }}
         />
+        {/* Mensagem de erro */}
+        {error && (
+          <Text className="text-red-500" variant="error">
+            {error}
+          </Text>
+        )}
       </div>
 
       {/* Botão Agendar */}

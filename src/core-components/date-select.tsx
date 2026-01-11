@@ -88,6 +88,7 @@ interface DateSelectProps extends VariantProps<typeof dateSelectVariants> {
   caretDown?: React.FC<React.ComponentProps<"svg">>;
   disabled?: boolean;
   className?: string;
+  minDate?: Date; // Adiciona esta linha
 }
 
 export default function DateSelect({
@@ -98,6 +99,7 @@ export default function DateSelect({
   onChange,
   calendarBlank,
   caretDown,
+  minDate, // Adiciona aqui
 }: DateSelectProps) {
   return (
     <>
@@ -109,6 +111,7 @@ export default function DateSelect({
           disabled={disabled}
           dateFormat="dd/MM/yyyy"
           locale="pt-BR"
+          minDate={minDate} // Adiciona esta linha
           customInput={
             <button
               className={cx(dateSelectVariants({ size, disabled }), className)}
