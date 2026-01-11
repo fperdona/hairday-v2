@@ -8,6 +8,7 @@ import CaretDown from "../assets/icons/caret-down.svg?react";
 import { useOutletContext } from "react-router";
 import Text from "../core-components/text";
 import DateSelect from "../core-components/date-select";
+import { filterByDate, filterByPeriod } from "../helpers/appointment-utils";
 import { SCHEDULE_PERIODS } from "../constants/schedule";
 
 export default function PageHome() {
@@ -16,6 +17,10 @@ export default function PageHome() {
     removeAppointment: (id: string) => void;
   }>();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const dayAppointments = filterByDate(appointments, selectedDate);
+  const morningAppointments = filterByPeriod(dayAppointments, "MORNING");
+  const afternoonAppointments = filterByPeriod(dayAppointments, "AFTERNOON");
+  const eveningAppointments = filterByPeriod(dayAppointments, "EVENING");
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between">
@@ -39,7 +44,7 @@ export default function PageHome() {
         icon={SunHorizon}
         period={SCHEDULE_PERIODS.MORNING.name}
         schedule={SCHEDULE_PERIODS.MORNING.schedule}
-        appointments={appointments}
+        appointments={morningAppointments}
         onDelete={removeAppointment}
       />
 
@@ -47,7 +52,7 @@ export default function PageHome() {
         icon={CloudSun}
         period={SCHEDULE_PERIODS.AFTERNOON.name}
         schedule={SCHEDULE_PERIODS.AFTERNOON.schedule}
-        appointments={appointments}
+        appointments={afternoonAppointments}
         onDelete={removeAppointment}
       />
 
@@ -55,7 +60,7 @@ export default function PageHome() {
         icon={MoonStars}
         period={SCHEDULE_PERIODS.EVENING.name}
         schedule={SCHEDULE_PERIODS.EVENING.schedule}
-        appointments={appointments}
+        appointments={eveningAppointments}
         onDelete={removeAppointment}
       />
     </div>
