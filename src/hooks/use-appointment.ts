@@ -14,13 +14,16 @@ export function useAppointments() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(appointments));
   }, [appointments]);
 
-  const addAppointment = (appointment: Omit<Appointment, "id">) => {
+  function addAppointment(date: string, time: string, clientName: string) {
     const newAppointment: Appointment = {
-      ...appointment,
       id: crypto.randomUUID(),
+      date,
+      time,
+      clientName,
     };
-    setAppointments((prev) => [...prev, newAppointment]);
-  };
+
+    setAppointments((prevState) => [...prevState, newAppointment]);
+  }
 
   const removeAppointment = (id: string) => {
     setAppointments((prev) => prev.filter((apt) => apt.id !== id));

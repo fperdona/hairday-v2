@@ -1,46 +1,10 @@
 import { Outlet } from "react-router";
 import Logo from "../assets/images/logo.svg?react";
-import Button from "../core-components/button";
+import AppointmentForm from "../components/appointment-form";
 import { useAppointments } from "../hooks/use-appointment";
 
 export default function LayoutMain() {
   const { appointments, addAppointment, removeAppointment } = useAppointments();
-
-  const handleAddMorning = () => {
-    addAppointment({
-      clientName: "Cliente Manhã " + appointments.length,
-      date: new Date().toISOString().split("T")[0], // Data de hoje
-      time: "09:00",
-    });
-    console.log("✅ Adicionado manhã!");
-  };
-
-  const handleAddAfternoon = () => {
-    addAppointment({
-      clientName: "Cliente Tarde " + appointments.length,
-      date: new Date().toISOString().split("T")[0],
-      time: "14:00",
-    });
-    console.log("✅ Adicionado tarde!");
-  };
-
-  const handleAddEvening = () => {
-    addAppointment({
-      clientName: "Cliente Noite " + appointments.length,
-      date: new Date().toISOString().split("T")[0],
-      time: "20:00",
-    });
-    console.log("✅ Adicionado noite!");
-  };
-
-  const handleRemove = () => {
-    if (appointments.length > 0) {
-      removeAppointment(appointments[0].id);
-      console.log("❌ Removido! Total:", appointments.length - 1);
-    }
-  };
-
-  console.log("📋 Appointments:", appointments);
 
   return (
     <>
@@ -50,12 +14,13 @@ export default function LayoutMain() {
         </div>
 
         <aside className="p-20 bg-gray-700 rounded-xl max-w-124.5 w-full flex flex-col gap-6 overflow-visible">
-          <Button onClick={handleAddMorning}>Adicionar Manhã</Button>
-          <Button onClick={handleAddAfternoon}>Adicionar Tarde</Button>
-          <Button onClick={handleAddEvening}>Adicionar Noite</Button>
+          <AppointmentForm
+            onSchedule={addAppointment}
+            appointments={appointments}
+          />
         </aside>
 
-        <div className="w-full px-28 py-20">
+        <div className=" w-full px-28 py-20">
           <Outlet context={{ appointments, removeAppointment }} />
         </div>
       </main>
