@@ -23,20 +23,22 @@ export default function PageHome() {
   const eveningAppointments = filterByPeriod(dayAppointments, "EVENING");
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-col xl:flex-row">
         <div className="flex flex-col gap-2">
           <Text variant="body-lg-bold">Sua agenda</Text>
           <Text className="text-gray-200 text-sm">
             Consulte os seus cortes de cabelo agendados por dia
           </Text>
         </div>
-        <DateSelect
-          selected={selectedDate}
-          calendarBlank={CalendarBlank}
-          caretDown={CaretDown}
-          className="w-full"
-          onChange={(date) => date && setSelectedDate(date)}
-        />
+        <div className="mt-4 xl:mt-0">
+          <DateSelect
+            selected={selectedDate}
+            calendarBlank={CalendarBlank}
+            caretDown={CaretDown}
+            className="w-full"
+            onChange={(date) => date && setSelectedDate(date)}
+          />
+        </div>
       </div>
 
       {/* Cards de período */}

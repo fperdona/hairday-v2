@@ -13,14 +13,14 @@ export default function LayoutMain() {
           <Logo />
         </div>
 
-        <aside className="p-20 bg-gray-700 rounded-xl max-w-124.5 w-full flex flex-col gap-6 overflow-visible">
+        <aside className="p-4 pt-20 md:p-20 bg-gray-700 rounded-xl max-w-124.5 w-full flex flex-col gap-6 overflow-visible">
           <AppointmentForm
             onSchedule={addAppointment}
             appointments={appointments}
           />
         </aside>
 
-        <div className=" w-full px-28 py-20">
+        <div className=" w-full p-4 lg:py-20 xl:px-28">
           <Outlet context={{ appointments, removeAppointment }} />
         </div>
       </main>

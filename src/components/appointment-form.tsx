@@ -87,7 +87,7 @@ export default function AppointmentForm({
             <SunHorizon className="h-4 fill-yellow" />
             {SCHEDULE_PERIODS.MORNING.name}
           </Text>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1 md:gap-2">
             {SCHEDULE_PERIODS.MORNING.times.map((time) => (
               <TimeSelection
                 key={time}
@@ -106,7 +106,7 @@ export default function AppointmentForm({
             <CloudSun className="h-4 fill-yellow" />
             {SCHEDULE_PERIODS.AFTERNOON.name}
           </Text>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1 md:gap-2">
             {SCHEDULE_PERIODS.AFTERNOON.times.map((time) => (
               <TimeSelection
                 key={time}
@@ -125,7 +125,7 @@ export default function AppointmentForm({
             <MoonStars className="h-4 fill-yellow" />
             {SCHEDULE_PERIODS.EVENING.name}
           </Text>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1 md:gap-2">
             {SCHEDULE_PERIODS.EVENING.times.map((time) => (
               <TimeSelection
                 key={time}
